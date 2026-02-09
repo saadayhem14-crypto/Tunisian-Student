@@ -55,18 +55,23 @@ body {
     z-index: 9999 !important;
 }
 /* هذا الكود يتطبق فقط على التليفونات */
+/* هذا الكود يصلح الـ Sidebar في التليفون */
 @media (max-width: 768px) {
-    .sidebar {
-        width: 100% !important; /* القائمة تولي تاخد الشاشة كاملة بالعرض */
-        left: -100%; /* تتخبا تماماً */
-    }
-    
-    .sidebar.open {
-        left: 0;
-    }
+  .sidebar {
+    position: fixed;
+    left: -100%; /* خبي الـ Sidebar لبرّة الشاشة */
+    width: 80% !important; /* خليه ياخذ مساحة معقولة كي يتحل */
+    z-index: 1000;
+    transition: 0.3s;
+  }
 
-    .bottom-nav {
-        width: 90% !important; /* الـ Bar لوطة يولي أصغر باش ما يخرجش مالأجناب */
-        gap: 10px !important; /* نقص في المسافة بين الأيقونات */
-    }
+  .sidebar.open {
+    left: 0; /* يتحل كي تنزل على الزر */
+  }
+
+  /* الـ Agent Bar (الأيقونات) */
+  .bottom-nav {
+    width: 95% !important;
+    bottom: 10px !important;
+  }
 }
