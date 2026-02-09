@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Cairo', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  direction: rtl; /* باش العربي يظهر منظم من اليمين */
+}
+
+/* ستايل الـ Glassmorphism للـ Quiz والملخصات */
+.glass-card {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 20px;
+}
