@@ -1,0 +1,8 @@
+{
+  "name": "TunisIA Student Help",
+  "description": "A multi-role AI platform for Tunisian students featuring coding debuggers, Derja assistants, and academic summarizers.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}

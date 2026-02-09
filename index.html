@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TunisIA Student Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Cairo:wght@300;400;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <style>
+        :root {
+            --font-arabic: 'Almarai', sans-serif;
+            --font-cairo: 'Cairo', sans-serif;
+            --font-latin: 'Plus Jakarta Sans', sans-serif;
+        }
+        
+        body { 
+            font-family: var(--font-latin); 
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background: linear-gradient(to bottom, rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.95)), 
+                        url('https://pollinations.ai/p/A+cinematic+high-quality+professional+background+featuring+a+focused+Tunisian+male+student+sitting+in+a+modern+sunlit+university+library+sleek+laptop+traditional+Tunisian+Chechia+cup+of+coffee+blurred+bookshelves+Mediterranean+windows+academic+tech-savvy+8k+photorealistic+soft+lighting+no+text?width=1920&height=1080&nologo=true');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+        }
+
+        .font-arabic { font-family: var(--font-arabic); }
+        .font-cairo { font-family: var(--font-cairo); }
+
+        #root {
+            min-height: 100vh;
+        }
+
+        /* Enhanced Glassmorphism */
+        .glass-panel { 
+            background: rgba(255, 255, 255, 0.05); 
+            backdrop-filter: blur(24px); 
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.1); 
+        }
+
+        .glass-card-hero {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+        }
+
+        .glass-card-dark {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        /* Markdown specific styles */
+        .prose { text-align: start; }
+        .prose table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.85rem; }
+        .prose th, .prose td { border: 1px solid rgba(0,0,0,0.1); padding: 0.75rem; text-align: start; }
+        .prose th { background: rgba(0,0,0,0.05); font-weight: 700; }
+        .prose pre { 
+            background: #1e293b; 
+            color: #f8fafc; 
+            padding: 1rem; 
+            border-radius: 0.75rem; 
+            overflow-x: auto; 
+            margin: 1rem 0; 
+            direction: ltr !important; 
+            text-align: left !important;
+        }
+        .prose blockquote { border-left: 4px solid #6366f1; border-right: 0; padding-left: 1rem; padding-right: 1rem; color: #475569; font-style: italic; margin: 1rem 0; background: rgba(99, 102, 241, 0.05); border-radius: 0 0.5rem 0.5rem 0; }
+        
+        [dir="rtl"] .prose blockquote {
+            border-right: 4px solid #6366f1;
+            border-left: 0;
+            border-radius: 0.5rem 0 0 0.5rem;
+        }
+
+        .prose p { margin-bottom: 0.75rem; }
+        
+        .katex-display { 
+            margin: 1rem 0; 
+            overflow-x: auto; 
+            overflow-y: hidden; 
+            padding: 0.5rem 0; 
+            direction: ltr !important;
+        }
+        
+        .katex { direction: ltr !important; }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.1); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.2); }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float { animation: float 6s ease-in-out infinite; }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.40.0",
+    "react-markdown": "https://esm.sh/react-markdown@^9.0.1",
+    "remark-gfm": "https://esm.sh/remark-gfm@^4.0.0",
+    "remark-math": "https://esm.sh/remark-math@^6.0.0",
+    "rehype-katex": "https://esm.sh/rehype-katex@^7.0.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body>
+    <div id="root"></div>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>
