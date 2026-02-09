@@ -54,3 +54,19 @@ body {
     transform: translateY(-80px) !important; /* هذا باش ينقز الـ Input فوق الـ Bar بـ 80 بيكسل */
     z-index: 9999 !important;
 }
+/* هذا الكود يتطبق فقط على التليفونات */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100% !important; /* القائمة تولي تاخد الشاشة كاملة بالعرض */
+        left: -100%; /* تتخبا تماماً */
+    }
+    
+    .sidebar.open {
+        left: 0;
+    }
+
+    .bottom-nav {
+        width: 90% !important; /* الـ Bar لوطة يولي أصغر باش ما يخرجش مالأجناب */
+        gap: 10px !important; /* نقص في المسافة بين الأيقونات */
+    }
+}
