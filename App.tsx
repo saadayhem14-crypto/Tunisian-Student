@@ -684,7 +684,7 @@ const App: React.FC = () => {
       </main>
 
       {/* MOBILE NAV BAR */}
-      <div className="lg:hidden fixed bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-3 glass-panel border border-white/10 p-2.5 rounded-[2.5rem] shadow-[0_20px_60px_rgba(0,0,0,0.5)] z-50 backdrop-blur-3xl animate-in slide-in-from-bottom-10">
+     <div className="lg:hidden sticky bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-3 glass-panel border border-white/10 p-2.5 rounded-[2.5rem] shadow-2xl z-50 mb-4 w-[95%] mx-auto" >
         {BOTS.map(bot => (
           <button
             key={bot.id}
