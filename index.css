@@ -32,3 +32,21 @@ body {
     transform: translateX(-50%);
     width: 90%; /* خليه ما يغطيش الشاشة كاملة بالعرض */
 }
+/* Container الرئيسي متاع الرسايل */
+.messages-container {
+    padding-bottom: 120px !important; /* نزيدو مسافة كبيرة لوطة */
+    display: flex;
+    flex-direction: column;
+}
+
+/* البلاصة اللي تكتب فيها (Input) */
+.input-section {
+    position: relative;
+    z-index: 100;
+    margin-bottom: 90px !important; /* نطلعوها فوق الـ Agent bar */
+}
+
+/* الـ Agent Bar (الأيقونات اللي لوطة) */
+.bottom-nav-agent {
+    z-index: 50; /* نخليوه تحت الـ Input باش ما يغطيش الكتيب */
+}
