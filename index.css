@@ -1,77 +1,104 @@
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
 
+/* الإعدادات العامة */
 body {
   margin: 0;
+  padding: 0;
   font-family: 'Cairo', sans-serif;
   -webkit-font-smoothing: antialiased;
-  direction: rtl; /* باش العربي يظهر منظم من اليمين */
+  direction: rtl; /* للعربي المنظم */
+  overflow-x: hidden; /* يمنع الشاشة تهرب بالجنب */
 }
 
-/* ستايل الـ Glassmorphism للـ Quiz والملخصات */
+/* ستايل الـ Glassmorphism */
 .glass-card {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   border-radius: 15px;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 20px;
 }
-/* زيد مسافة لوطة للـ Chat باش ما يتغطاش بالـ Bar */
+
+/* الـ Chat Container - نزيدوه Padding كبير لوطة */
 .chat-container {
-    padding-bottom: 100px; /* المسافة هذي تخلي الـ Chat يطلع فوق الـ Bar */
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding-bottom: 180px !important; /* مساحة كافية للـ Input والـ Bar */
+  overflow-y: auto;
 }
 
-/* تأكد إن الـ Input field محطوط في طبقة واضحة */
-.input-area {
-    position: relative;
-    z-index: 10; /* باش يظهر فوق أي خلفية */
-    margin-bottom: 80px; /* يطلعو فوق الـ Navigation Agent */
+/* الـ Sidebar - مخفي في الموبايل ومحلول في الـ PC */
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: -100%; /* مخفي جهة اليمين خاطر الموقع RTL */
+  width: 280px;
+  height: 100vh;
+  background: #111827; /* لون غامق احترافي */
+  z-index: 10000;
+  transition: all 0.3s ease-in-out;
+  box-shadow: -5px 0 15px rgba(0,0,0,0.5);
 }
+
+/* كي يتحل الـ Sidebar في الموبايل */
+.sidebar.open {
+  right: 0;
+}
+
+/* الـ Input Section - لاصقة لوطة فوق الـ Agent Bar */
+.input-section {
+  position: fixed;
+  bottom: 100px; /* فوق الـ Bar بضبط */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 800px;
+  z-index: 9999;
+}
+
+/* الـ Agent Bar (الأيقونات لوطة) */
 .bottom-nav {
-    bottom: 20px; /* ارفعه شويّة على الحافة */
-    left: 50%;
-    transform: translateX(-50%);
-    width: 90%; /* خليه ما يغطيش الشاشة كاملة بالعرض */
-}
-/* Container الرئيسي متاع الرسايل */
-.messages-container {
-    padding-bottom: 120px !important; /* نزيدو مسافة كبيرة لوطة */
-    display: flex;
-    flex-direction: column;
-}
-
-/* البلاصة اللي تكتب فيها (Input) */
-.input-section {
-    position: relative;
-    z-index: 100;
-    margin-bottom: 90px !important; /* نطلعوها فوق الـ Agent bar */
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 95%;
+  max-width: 500px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: rgba(31, 41, 55, 0.8);
+  backdrop-filter: blur(12px);
+  padding: 12px;
+  border-radius: 50px;
+  z-index: 9998;
+  border: 1px solid rgba(255,255,255,0.1);
 }
 
-/* الـ Agent Bar (الأيقونات اللي لوطة) */
-.bottom-nav-agent {
-    z-index: 50; /* نخليوه تحت الـ Input باش ما يغطيش الكتيب */
-}
-.input-section {
-    transform: translateY(-80px) !important; /* هذا باش ينقز الـ Input فوق الـ Bar بـ 80 بيكسل */
-    z-index: 9999 !important;
-}
-/* هذا الكود يتطبق فقط على التليفونات */
-/* هذا الكود يصلح الـ Sidebar في التليفون */
-@media (max-width: 768px) {
+/* تعديلات خاصة بالـ PC (الشاشات الكبيرة) */
+@media (min-width: 769px) {
   .sidebar {
-    position: fixed;
-    left: -100%; /* خبي الـ Sidebar لبرّة الشاشة */
-    width: 80% !important; /* خليه ياخذ مساحة معقولة كي يتحل */
-    z-index: 1000;
-    transition: 0.3s;
+    right: 0; /* ديما ظاهر في الـ PC */
+    width: 260px;
   }
-
-  .sidebar.open {
-    left: 0; /* يتحل كي تنزل على الزر */
+  
+  .chat-container {
+    margin-right: 260px; /* دفع الـ Chat باش ما يتغطاش بالـ Sidebar */
   }
+  
+  .input-section {
+    left: calc(50% - 130px); /* موازنة الـ Input مع وجود الـ Sidebar */
+  }
+}
 
-  /* الـ Agent Bar (الأيقونات) */
-  .bottom-nav {
-    width: 95% !important;
-    bottom: 10px !important;
+/* تعديلات خاصة بالـ iPhone */
+@media (max-width: 768px) {
+  .input-section {
+    width: 95%;
+    bottom: 90px;
+  }
+  
+  .chat-container {
+    padding-bottom: 160px !important;
   }
 }
