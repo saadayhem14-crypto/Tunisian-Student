@@ -50,3 +50,7 @@ body {
 .bottom-nav-agent {
     z-index: 50; /* نخليوه تحت الـ Input باش ما يغطيش الكتيب */
 }
+.input-section {
+    transform: translateY(-80px) !important; /* هذا باش ينقز الـ Input فوق الـ Bar بـ 80 بيكسل */
+    z-index: 9999 !important;
+}
