@@ -15,3 +15,20 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.1);
   padding: 20px;
 }
+/* زيد مسافة لوطة للـ Chat باش ما يتغطاش بالـ Bar */
+.chat-container {
+    padding-bottom: 100px; /* المسافة هذي تخلي الـ Chat يطلع فوق الـ Bar */
+}
+
+/* تأكد إن الـ Input field محطوط في طبقة واضحة */
+.input-area {
+    position: relative;
+    z-index: 10; /* باش يظهر فوق أي خلفية */
+    margin-bottom: 80px; /* يطلعو فوق الـ Navigation Agent */
+}
+.bottom-nav {
+    bottom: 20px; /* ارفعه شويّة على الحافة */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%; /* خليه ما يغطيش الشاشة كاملة بالعرض */
+}
